@@ -3,5 +3,117 @@ body {
 }
 
 .wrapper {
-	@include outer-container(80%);
+	@include outer-container(90%);
 } 
+
+
+/*NAV*/
+
+.centered-navigation-menu {
+
+/*	style gulp icon differently due to width*/
+	.nav-link:nth-child(3) {
+		a {
+			img {
+				margin-bottom: 5px;
+				height: 45px;					
+			}				
+		}
+	}
+
+
+	.nav-btn {
+		@include button;
+/*		line-height: 25px;*/
+		padding: 1px 6px 1px 6px;
+
+		img {
+			margin-right: .3em;
+			display: inline-block;
+			height: 35px;
+		}
+
+		img, span {
+			vertical-align: middle;
+		}
+	}
+}
+
+
+/*USER INPUT*/
+
+	.user-input {
+		@include span-columns(2);
+
+		background: #666; 
+	}
+
+
+
+/*MAIN CONTENT */
+
+	.cheat-sheet {
+		@include span-columns(10);		
+
+		text-align: center;
+		background: #EEE; 
+
+		>.fullwidth {
+			padding: 1em 1em;
+			text-align: center;
+			background: #AAA;
+		}
+
+		div:first-child { 
+
+
+		};
+	}
+
+
+	.fullwidth {
+		@include span-columns(12);
+	}
+
+
+	.entry-list {
+		text-align: center;
+		@include row();
+		padding: 0;
+		list-style-type: none;
+		margin: .5em;
+		background: #DAB;
+
+		.entry {
+			@include media($desktop) {
+				@include span-columns(4);				
+				@include omega(auto);
+			}
+
+
+			padding: .5em;
+			background: #D04;
+
+
+			.command {
+				@include button;
+				min-width: 100%;
+				padding: 2px 5px;
+				box-shadow: -1px 2px 1px rgba(30, 10, 10, .3);
+			}
+
+		}
+	}
+
+	.group-heading {
+		@include span-columns(12);
+		background: #501;
+		color: #DCC;
+		padding: 1em;
+	}
+
+	.cheat-group {
+		@include span-columns(6);
+		background: #FCD;
+	}
+

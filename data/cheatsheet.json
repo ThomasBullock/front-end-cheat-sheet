@@ -1,0 +1,161 @@
+{
+	"git": [
+			{
+				"create": 
+				[{
+					"command" : "git init",
+					"description": "Create a new local repository",
+					"tag": ["create"]
+				},
+				{
+					"command" : "git clone http://yourUrl.com/repo.git",
+					"description": "Clone an existing repository",
+					"tag": ["create", "clone"]
+				}]
+			},
+			{
+				"local changes": 
+				[{
+					"command" : "git status",
+					"description": "Lists changed files in your working directory",
+					"tag": ["local changes"]
+				},
+				{
+					"command" : "git add .",
+					"description": "Add all changes to next commit",
+					"tag": ["local changes"]
+				},
+				{
+					"command" : "git commit -a -m \"I'm adding this message\"",
+					"description": "Add all changes to next commit",
+					"tag": ["local changes"]
+				},
+				{
+					"command" : "\"press i to start entering text and save by pressing esc and :wq and enter\"",
+					"description": "How to exit VIM if you commit without -m tag",
+					"tag": ["local changes"]
+				}]
+			},
+			{
+				"history": 
+				[{
+					"command" : "git log",
+					"description": "Show all commits, newest first.",
+					"tag": ["log"]
+				},
+				{
+					"command" : "git log -p myfile",
+					"description": "Show changes over time for myfile",
+					"tag": ["log"]
+				},
+				{
+					"command" : "git blame myfile",
+					"description": "See who changed what/when in myfile",
+					"tag": ["blame"]
+				}]
+			}			
+			],
+	"gulp": [
+			{
+				"Setup": 
+				[{
+					"command" : "npm install --global gulp-cli;",
+					"description": "Install gulp globally.",
+					"tag": ["install", "global"]
+				},
+				{
+					"command" : "npm install --save-dev gulp;",
+					"description": "Install gulp in your project devDependencies.",
+					"tag": ["install" , "local"]		
+				}]
+			},
+			{
+				"API": 
+				[{
+					"command" : "gulp.task('somename', function() { // Do stuff });;",
+					"description": "Define a task.",
+					"tag": ["task"]	
+				},
+				{
+					"command" : "gulp.task('mytask', ['array', 'of', 'task', 'names'], function() { // Do stuff });",
+					"description": "Define a task. with an array of tasks to be executed and completed before your task will run.",
+					"tag": ["task"]
+				},
+				{
+					"command" : "gulp.watch('path/to/**/*.scss', ['name of task to run'])",
+					"description": "Watch files and do something when a file changes.",
+					"tag": ["watch"]
+				}			
+				]
+			}
+			],
+		"terminal": [
+			{
+				"Setup": 
+				[{
+					"command" : "npm install --global gulp-cli;",
+					"description": "Install gulp globally.",
+					"tag": ["install", "global"]
+				},
+				{
+					"command" : "npm install --save-dev gulp;",
+					"description": "Install gulp in your project devDependencies.",
+					"tag": ["install" , "local"]		
+				}]
+			},
+			{
+				"API": 
+				[{
+					"command" : "gulp.task('somename', function() { // Do stuff });;",
+					"description": "Define a task.",
+					"tag": ["task"]	
+				},
+				{
+					"command" : "gulp.task('mytask', ['array', 'of', 'task', 'names'], function() { // Do stuff });",
+					"description": "Define a task. with an array of tasks to be executed and completed before your task will run.",
+					"tag": ["task"]
+				},
+				{
+					"command" : "gulp.watch('path/to/**/*.scss', ['name of task to run'])",
+					"description": "Watch files and do something when a file changes.",
+					"tag": ["watch"]
+				}			
+				]
+			}
+			],
+"bourbon": [
+			{
+				"Animations and Transitions": 
+				[{
+					"command" : "@include animation(scale 1.0s ease-in, slide 2.0s ease);",
+					"description": "Animation mixin supports comma separated lists of values, which allows different transitions for individual properties to be described in a single style rule.",
+					"tag": ["animation"]
+				},
+				{
+					"command" : "@include transition(opacity 1.0s ease-in 0s, width 2.0s ease-in 2s);",
+					"description": "Transition provides a shorthand syntax and supports multiple transitions.",
+					"tag": ["transition"]		
+				}]
+			},
+			{
+				"Styling": 
+				[{
+					"command" : "@include size(10em auto);",
+					"description": "Set width and height in a single statement. Accepts all units.",
+					"tag": ["size"]	
+				},
+				{
+					"command" : "@include position(relative, 0 null null 10em);",
+					"description": "A shorthand notation for positioning elements.",
+					"tag": ["position"]
+				}
+				]
+			}
+			]
+
+
+}
+
+
+
+

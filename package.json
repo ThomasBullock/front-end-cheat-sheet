@@ -23,6 +23,7 @@
     "gulp-uglify": "^2.0.0"
   },
   "dependencies": {
+    "clipboard": "^1.5.15",
     "jquery": "^1.12.4"
   }
 }

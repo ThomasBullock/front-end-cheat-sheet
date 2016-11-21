@@ -1,6 +1,6 @@
 // $(document).ready(function(){
 
-	console.log( "Application is running" );
+	// console.log( "Application is running" );
 
 
 	// Data/Model Object
@@ -8,12 +8,11 @@
 		self: this,
 		init: function() {
 			$.getJSON('data/cheatsheet.json', function(response){
-				console.log(response)
+				// console.log(response)
 				data.git = response.git;
 				data.terminal = response.terminal;
 				data.bourbon = response.bourbon;
 				data.gulp = response.gulp;				
-				app.viewModel.init()
 			});
 		}
 	}
@@ -21,12 +20,12 @@
 
 
 	function Group(info) {
-		console.log(info)
+		// console.log(info)
 		this.name = Object.keys(info);
-		console.log(this.name);
+		// console.log(this.name);
 		this.entries = [];
 		for(var i = 0; i < info[this.name].length; i++) {
-			console.log(info[this.name][i]);
+			// console.log(info[this.name][i]);
 
 			this.entries.push(new Entry(info[this.name][i]));
 		}
@@ -45,7 +44,7 @@
 	// };
 
 	function Entry(info) { /////////////!!!!!!
-		console.log(info);
+		// console.log(info);
 		this.command = info.command;
 		this.description = info.description;
 		this.tag = info.tag;
@@ -57,11 +56,6 @@
 
 	var AppViewModel = function() {
 		var self = this;
-
-		self.init = function() {
-			self.bourbon = data.bourbon;
-			self.git = data.git;
-		}
 
 		self.myList = ko.observable();
 		self.myListDisplay = ko.computed(function(){
@@ -76,6 +70,14 @@
 			// console.log(self[JSON.stringify(select)]);
 			self.buildList(select.toLowerCase());
 		})
+
+		self.copy = new Clipboard('.command', {
+			    text: function(trigger) {
+			    	 console.log(trigger);
+			    	 console.log(this);
+       				 return trigger.innerText;
+    			}
+		});
 
 		self.buildList = function(name) {
 

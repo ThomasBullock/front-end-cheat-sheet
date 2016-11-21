@@ -53,7 +53,35 @@
 					"description": "See who changed what/when in myfile",
 					"tag": ["blame"]
 				}]
-			}			
+			},
+			{
+				"branches": 
+				[{
+					"command" : "git branch -av",
+					"description": "List all existing branches.",
+					"tag": ["branch"]
+				},
+				{
+					"command" : "git checkout mybranch",
+					"description": "Switch to mybranch",
+					"tag": ["branch"]
+				},
+				{
+					"command" : "git branch mybranch",
+					"description": "Create a new branch called mybranch",
+					"tag": ["branch"]
+				},
+				{
+					"command" : "git checkout --track http://yourUrl.com/repo.git",
+					"description": "Create a new tracking branch based on a remote branch.",
+					"tag": ["branch"]
+				},
+				{
+					"command" : "git branch -d mybranch",
+					"description": "delete local branch called mybranch",
+					"tag": ["branch"]
+				}]
+			}							
 			],
 	"gulp": [
 			{

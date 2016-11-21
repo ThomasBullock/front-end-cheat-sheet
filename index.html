@@ -39,7 +39,7 @@
 			<h3 data-bind="text: name"></h3>
 			<ul class="entry-list" data-bind="foreach: entries">
 				<div class="entry">
-					<li class="command" data-bind="text: command"></li>
+					<li><a href="#" class="command" data-bind="text: command" role="button"></a></li>
 					<li data-bind="text: description"></li>					
 				</div>
 
@@ -62,6 +62,7 @@
 <!--  <script   src="https://code.jquery.com/jquery-2.2.4.min.js"   integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44="   crossorigin="anonymous"></script> -->
 <!--  <script   src="https://code.jquery.com/jquery-1.12.4.min.js"   integrity="sha256-ZosEbRLbNQzLpnKIkEdrPv7lOy9C27hHQ+Xp8a4MxAQ="   crossorigin="anonymous"></script> -->
 <!--  <script type='javascript' src='js/knockout-min.js'></script> -->
+ <script src="node_modules/clipboard/dist/clipboard.min.js"></script>
  <script src="js/app.js" type="text/javascript"></script>
  </body>
  </html> 

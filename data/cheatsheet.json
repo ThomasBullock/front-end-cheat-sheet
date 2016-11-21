@@ -87,12 +87,12 @@
 			{
 				"Setup": 
 				[{
-					"command" : "npm install --global gulp-cli;",
+					"command" : "npm install --global gulp-cli",
 					"description": "Install gulp globally.",
 					"tag": ["install", "global"]
 				},
 				{
-					"command" : "npm install --save-dev gulp;",
+					"command" : "npm install --save-dev gulp",
 					"description": "Install gulp in your project devDependencies.",
 					"tag": ["install" , "local"]		
 				}]
@@ -100,7 +100,7 @@
 			{
 				"API": 
 				[{
-					"command" : "gulp.task('somename', function() { // Do stuff });;",
+					"command" : "gulp.task('somename', function() { // Do stuff });",
 					"description": "Define a task.",
 					"tag": ["task"]	
 				},
@@ -119,36 +119,61 @@
 			],
 		"terminal": [
 			{
-				"Setup": 
+				"Core Commands": 
 				[{
-					"command" : "npm install --global gulp-cli;",
-					"description": "Install gulp globally.",
-					"tag": ["install", "global"]
+					"command" : "cd ~",
+					"description": "Change to user home directory",
+					"tag": ["change", "home"]	
 				},
 				{
-					"command" : "npm install --save-dev gulp;",
-					"description": "Install gulp in your project devDependencies.",
-					"tag": ["install" , "local"]		
-				}]
-			},
-			{
-				"API": 
-				[{
-					"command" : "gulp.task('somename', function() { // Do stuff });;",
-					"description": "Define a task.",
-					"tag": ["task"]	
+					"command" : "cd ..;",
+					"description": "Change directory to the current directory's parent directory",
+					"tag": ["change", "up", "parent"]
 				},
 				{
-					"command" : "gulp.task('mytask', ['array', 'of', 'task', 'names'], function() { // Do stuff });",
-					"description": "Define a task. with an array of tasks to be executed and completed before your task will run.",
-					"tag": ["task"]
+					"command" : "ls -a",
+					"description": "List all files including hidden.",
+					"tag": ["list", "hidden"]
 				},
 				{
-					"command" : "gulp.watch('path/to/**/*.scss', ['name of task to run'])",
-					"description": "Watch files and do something when a file changes.",
-					"tag": ["watch"]
-				}			
+					"command" : "open [myfile]",
+					"description": "Open file named myfile",
+					"tag": ["open", "file"]
+				},				
+				{
+					"command" : "clear",
+					"description": "Clear terminal screen.",
+					"tag": ["clear"]
+				}						
 				]
+			},		
+			{
+				"File Management": 
+				[{
+					"command" : "touch [myfile];",
+					"description": "Create a new file [myfile].",
+					"tag": ["touch", "create"]
+				},
+				{
+					"command" : "pwd",
+					"description": "Display path to working directory",
+					"tag": ["path" , "directory"]		
+				},
+				{
+					"command" : "mkdir [mydir]",
+					"description": "make directory [mydir]",
+					"tag": ["make" , "create"]		
+				},				
+				{
+					"command" : "rm [myfile]",
+					"description": "remove file [myfile]",
+					"tag": ["remove" , "delete"]		
+				},
+				{
+					"command" : "rm -r [mydir]",
+					"description": "remove directory [mydir]",
+					"tag": ["remove" , "delete"]		
+				}]
 			}
 			],
 "bourbon": [

@@ -98,9 +98,22 @@
 				}]
 			},
 			{
+				"Running Tasks": 
+				[{
+					"command" : "gulp",
+					"description": "Run default task.",
+					"tag": ["run", "task"]
+				},
+				{
+					"command" : "gulp mytask",
+					"description": "Run task named mytask ",
+					"tag": ["install" , "local"]		
+				}]
+			},			
+			{
 				"API": 
 				[{
-					"command" : "gulp.task('somename', function() { // Do stuff });",
+					"command" : "gulp.task('mytask', function() { // Do stuff });",
 					"description": "Define a task.",
 					"tag": ["task"]	
 				},
@@ -173,7 +186,13 @@
 					"command" : "rm -r [mydir]",
 					"description": "remove directory [mydir]",
 					"tag": ["remove" , "delete"]		
-				}]
+				},
+				{
+					"command" : "cp [myfile] [mynewfile]",
+					"description": "Copy myfile to mynewfile",
+					"tag": ["copy" , "file"]		
+				}				
+				]
 			}
 			],
 "bourbon": [

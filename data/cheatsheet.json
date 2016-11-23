@@ -178,6 +178,24 @@
 			],
 "bourbon": [
 			{
+				"Installation": 
+				[{
+					"command" : "gem install bourbon",
+					"description": "Install the gem.",
+					"tag": ["install", "gem"]
+				},
+				{
+					"command" : "bourbon install",
+					"description": "Install bourbon into local project (creates a bourbon folder)",
+					"tag": ["install", "local"]		
+				},
+				{
+					"command" : "@import \"bourbon/bourbon\";",
+					"description": "Import the mixins at the beginning of your stylesheet(s)",
+					"tag": ["import", "setup"]		
+				}				]
+			},
+			{
 				"Animations and Transitions": 
 				[{
 					"command" : "@include animation(scale 1.0s ease-in, slide 2.0s ease);",
@@ -188,7 +206,12 @@
 					"command" : "@include transition(opacity 1.0s ease-in 0s, width 2.0s ease-in 2s);",
 					"description": "Transition provides a shorthand syntax and supports multiple transitions.",
 					"tag": ["transition"]		
-				}]
+				},
+				{
+					"command" : "@include transition(all 5s $ease-in-circ);",
+					"description": "CSS cubic-bezier timing functions (same as the jQuery UI) are variables that can be used with CSS3 animations and transitions.",
+					"tag": ["transition"]		
+				}				]
 			},
 			{
 				"Styling": 
@@ -198,10 +221,25 @@
 					"tag": ["size"]	
 				},
 				{
+					"command" : "@include margin(null 10px 3em 20vh);",
+					"description": "Pargin mixin accepts up to four values, including null, and uses the directional-property mixin to map them to their respective directions.",
+					"tag": ["size"]	
+				},
+				{
+					"command" : "@include padding(20vh null 10px 3em);",
+					"description": "Padding mixin accepts up to four values, including null, and uses the directional-property mixin to map them to their respective directions.",
+					"tag": ["size"]	
+				},				
+				{
 					"command" : "@include position(relative, 0 null null 10em);",
 					"description": "A shorthand notation for positioning elements.",
 					"tag": ["position"]
-				}
+				},
+				{
+					"command" : "@include text-decoration(underline double rgb(124,213,224));",
+					"description": "A shorthand notation for text-decoration-color, text-decoration-line, and text-decoration-style. ",
+					"tag": ["text", "decoration"]
+				}				
 				]
 			}
 			]

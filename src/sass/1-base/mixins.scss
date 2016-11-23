@@ -1,0 +1,30 @@
+/* start da css for da buttons */
+@mixin btn() {
+
+    border-radius: 5px;
+    padding: .5em 1em;
+    font-size: 1em;
+    width: 80%;
+    text-decoration: none;
+    margin: 20px;
+    color: #fff;
+    position: relative;
+    display: inline-block;
+    text-shadow: 0 1px 1px rgba(10, 10, 30, .5);
+
+
+    &:active {
+      transform: translate(0px, 5px);
+      -webkit-transform: translate(0px, 5px);
+      box-shadow: 0px 1px 0px 0px;
+    }
+
+
+    background-color: #55acee;
+    box-shadow: 0px 5px 0px 0px #3C93D5;
+
+
+    &:hover {
+      background-color: #6FC6FF;
+    }
+}

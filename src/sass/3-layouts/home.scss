@@ -23,7 +23,7 @@ body {
 
 
 	.nav-btn {
-		@include button;
+/*		@include button;*/
 /*		line-height: 25px;*/
 		padding: 1px 6px 1px 6px;
 
@@ -44,8 +44,14 @@ body {
 
 	.user-input {
 		@include span-columns(2);
+		text-align: center;
+		padding: 1em;
 
-		background: #666; 
+		background: #666;
+
+		.search-bar {
+			margin-top: 1em;
+		}
 	}
 
 
@@ -82,24 +88,32 @@ body {
 		padding: 0;
 		list-style-type: none;
 		margin: .5em;
-		background: #DAB;
+		background: #E27;
 
 		.entry {
 			@include media($desktop) {
 				@include span-columns(4);				
-				@include omega(auto);
+				@include omega(3n);
 			}
 
+			padding: .5em 1em;
 
-			padding: .5em;
-			background: #D04;
+			li:nth-child(2) {
+				margin-top: .5em;
+			}
+/*			background: #D04;*/
 
 
 			.command {
-				@include button;
+				@include btn;
+/*				border-radius: 10px;
 				min-width: 100%;
 				padding: 2px 5px;
-				box-shadow: -1px 2px 1px rgba(30, 10, 10, .3);
+					box-shadow: -1px 2px 1px rgba(30, 10, 10, .3);		
+			*/
+				&:hover {
+/*					box-shadow: -1px 2px 1px rgba(30, 10, 10, .3);		*/
+				};
 			}
 
 		}

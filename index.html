@@ -38,8 +38,8 @@
 		<div data-bind="foreach: cheatList">
 			<h3 data-bind="text: name"></h3>
 			<ul class="entry-list" data-bind="foreach: entries">
-				<div class="entry">
-					<li><a href="#" class="command" data-bind="text: command" role="button"></a></li>
+				<div class="entry" data-bind="visible: $root.filtered">
+					<li><a href="javascript:void(0)" class="command" data-bind="text: command" role="button"></a></li>
 					<li data-bind="text: description"></li>					
 				</div>
 
@@ -49,6 +49,14 @@
 	</div>
 	<div class="user-input">
 		<h2>User Input</h2>
+
+
+		<form class="search-bar" role="search">
+		  <input type="search" placeholder="Filter Cheats" data-bind="value: filter, valueUpdate: 'keyup'"/>
+<!-- 		  <button type="submit" >
+		    <img src="https://raw.githubusercontent.com/thoughtbot/refills/master/source/images/search-icon-black.png" alt="Search Icon">
+		  </button> -->
+		</form>
 	</div>
 
 

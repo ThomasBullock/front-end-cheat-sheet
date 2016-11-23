@@ -118,10 +118,13 @@ hr {
   Button Styles
 ==================================== */
 
-button {
+
+
+/*button {*/
 /*  appearance: none;*/
 /*  background-color: $action-color;*/
-  border: 0;
+/*  transition: background-color $base-duration $base-timing;*/
+/*  border: 0;
   border-radius: $base-border-radius;
   color: #fff;
   cursor: pointer;
@@ -133,27 +136,30 @@ button {
   line-height: 1;
   padding: $small-spacing $base-spacing;
   text-align: center;
-  text-decoration: none;
-/*  transition: background-color $base-duration $base-timing;*/
-  user-select: none;
+  text-decoration: none;*/
+
+/*  user-select: none;
   vertical-align: middle;
   white-space: nowrap;
+  box-shadow: -1px 2px 1px rgba(30, 10, 10, .3);*/
 
-  &:hover,
+/*  &:hover,
   &:focus {
     background-color: shade($action-color, 20%);
     color: #fff;
-  }
-
+    box-shadow: -1px 2px 1px rgba(30, 10, 10, .3);
+  }*/
+/*
   &:disabled {
     cursor: not-allowed;
-    opacity: 0.5;
+    opacity: 0.5;*/
 
-    &:hover {
+/*    &:hover {
       background-color: $action-color;
+              box-shadow: -1px 2px 1px rgba(30, 10, 10, .3);
     }
   }
-}
+}*/
 
 /* ================================= 
   Form Styles

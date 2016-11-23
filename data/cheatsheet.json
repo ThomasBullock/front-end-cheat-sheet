@@ -5,7 +5,7 @@
 				[{
 					"command" : "git init",
 					"description": "Create a new local repository",
-					"tag": ["create"]
+					"tag": ["create", "init", "initialize"]
 				},
 				{
 					"command" : "git clone http://yourUrl.com/repo.git",

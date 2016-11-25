@@ -1,7 +1,7 @@
 {
 	"git": [
 			{
-				"create": 
+				"Create": 
 				[{
 					"command" : "git init",
 					"description": "Create a new local repository",
@@ -14,21 +14,26 @@
 				}]
 			},
 			{
-				"local changes": 
+				"Local Changes": 
 				[{
 					"command" : "git status",
 					"description": "Lists changed files in your working directory",
-					"tag": ["local changes"]
+					"tag": ["local changes", "status"]
 				},
+				{
+					"command" : "git diff",
+					"description": "Display changes to tracked files",
+					"tag": ["local changes", "diff", "tracked"]
+				},				
 				{
 					"command" : "git add .",
 					"description": "Add all changes to next commit",
-					"tag": ["local changes"]
+					"tag": ["local changes", "add", "all"]
 				},
 				{
 					"command" : "git commit -a -m \"I'm adding this message\"",
 					"description": "Add all changes to next commit",
-					"tag": ["local changes"]
+					"tag": ["local changes", "commit", "all", "message"]
 				},
 				{
 					"command" : "\"press i to start entering text and save by pressing esc and :wq and enter\"",
@@ -37,7 +42,7 @@
 				}]
 			},
 			{
-				"history": 
+				"History": 
 				[{
 					"command" : "git log",
 					"description": "Show all commits, newest first.",
@@ -55,7 +60,7 @@
 				}]
 			},
 			{
-				"branches": 
+				"Branches": 
 				[{
 					"command" : "git branch -av",
 					"description": "List all existing branches.",
@@ -80,8 +85,49 @@
 					"command" : "git branch -d mybranch",
 					"description": "delete local branch called mybranch",
 					"tag": ["branch"]
+				},
+				{
+					"command" : "git tag mytag",
+					"description": "Mark current commit with a tag called mytag",
+					"tag": ["branch"]
 				}]
-			}							
+			},
+			{
+				"Update and Publish": 
+				[{
+					"command" : "git remote -v",
+					"description": "List all remotes",
+					"tag": ["remote", "all"]
+				},
+				{
+					"command" : "git remote show myremote",
+					"description": "Show infomation about a remote.",
+					"tag": ["remote", "show"]
+				},
+				{
+					"command" : "git remote show myremote",
+					"description": "Show infomation about a remote.",
+					"tag": ["remote", "show"]
+				},
+				{
+					"command" : "git remote add myremote myurl",
+					"description": "Add new remote repository named myremote at myurl",
+					"tag": ["remote", "show"]
+				}]
+			},			
+			{
+				"Merge and Rebase": 
+				[{
+					"command" : "git merge mybranch",
+					"description": "Merge mybranch into your current HEAD",
+					"tag": ["merge"]
+				},
+				{
+					"command" : "git rebase mybranch",
+					"description": "Rebase your current HEAD onto mybranch",
+					"tag": ["rebase"]
+				}]
+			}										
 			],
 	"gulp": [
 			{
@@ -212,7 +258,7 @@
 					"command" : "@import \"bourbon/bourbon\";",
 					"description": "Import the mixins at the beginning of your stylesheet(s)",
 					"tag": ["import", "setup"]		
-				}				]
+				}]
 			},
 			{
 				"Animations and Transitions": 
@@ -242,12 +288,12 @@
 				{
 					"command" : "@include margin(null 10px 3em 20vh);",
 					"description": "Pargin mixin accepts up to four values, including null, and uses the directional-property mixin to map them to their respective directions.",
-					"tag": ["size"]	
+					"tag": ["margin"]	
 				},
 				{
 					"command" : "@include padding(20vh null 10px 3em);",
 					"description": "Padding mixin accepts up to four values, including null, and uses the directional-property mixin to map them to their respective directions.",
-					"tag": ["size"]	
+					"tag": ["padding"]	
 				},				
 				{
 					"command" : "@include position(relative, 0 null null 10em);",
@@ -258,9 +304,42 @@
 					"command" : "@include text-decoration(underline double rgb(124,213,224));",
 					"description": "A shorthand notation for text-decoration-color, text-decoration-line, and text-decoration-style. ",
 					"tag": ["text", "decoration"]
+				},
+				{
+					"command" : "@include word-wrap;",
+					"description": "Forces long text (like URLs) to wrap instead of breaking your layout. It uses the ($word-wrap)argument, with a default value of break-word.",
+					"tag": ["wrap", "text"]
 				}				
 				]
-			}
+			},
+			{
+				"Functions": 
+				[{
+					"command" : "linear-gradient(white 0, yellow 50%, transparent 50%)",
+					"description": "Outputs a linear-gradient. Use in conjunction with the background-image mixin. The function takes the same arguments as the linear-gradient mixin.",
+					"tag": ["function", "gradient", "linear"]
+				},
+				{
+					"command" : "em(12, 24);",
+					"description": "Convert pixels to ems. The parent (default 16px) can be changed by passing an optional second value. Accepts unitless and pixel values for size.",
+					"tag": ["function", "pixels", "em", "convert"]		
+				},
+				{
+					"command" : "rem(12);",
+					"description": "Convert pixels to rems. This assumes 1rem is 16px. You can override this by defining a new size for the $em-base.",
+					"tag": ["import", "setup"]		
+				},
+				{
+					"command" : "tint(red, 40%);",
+					"description": "Tint differs from Sass's built in lighten function. It takes a color and a percent argument.",
+					"tag": ["function", "tint", "lighten"]		
+				},
+				{
+					"command" : "shade(blue, 60%);",
+					"description": "Shade differs from Sass's built in darken function. It takes a color and a percent argument.",
+					"tag": ["function", "shade", "darken"]		
+				}]
+			}			
 			]
 
 

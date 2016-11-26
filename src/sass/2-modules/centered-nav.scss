@@ -5,7 +5,7 @@
   $base-font-color: $dark-gray !default;
   $centered-navigation-padding: 1em;
   $centered-navigation-logo-height: 2em;
-  $centered-navigation-background: #E7F1EC;
+  $centered-navigation-background: #62b9fb; 
   $centered-navigation-color: transparentize($base-font-color, 0.3);
   $centered-navigation-color-hover: $base-font-color;
   $centered-navigation-height: 60px;
@@ -15,8 +15,10 @@
   $centered-navigation-item-nudge: 2.2em;
   $horizontal-bar-mode: $large-screen;
 
+/*#E7F1EC*/
+
   background-color: $centered-navigation-background;
-  border-bottom: 1px solid darken($centered-navigation-background, 6%);
+  border-bottom: 1px solid darken($centered-navigation-background, 24%);
   min-height: $centered-navigation-height;
   width: 100%;
   z-index: 9999;
@@ -84,6 +86,7 @@
     }
 
     @include media ($horizontal-bar-mode) {
+/*      background: red;*/
       display: block;
       text-align: center;
     }
@@ -98,7 +101,11 @@
   }
 
   ul li.nav-link {
-    background: $centered-navigation-background;
+    @include media($desktop) {
+      border-top: none;
+    }
+    border-top: solid 1px darken($centered-navigation-background, 15%);
+    background: darken($centered-navigation-background, 10%);
     display: block;
     line-height: $centered-navigation-height;
     overflow: hidden;

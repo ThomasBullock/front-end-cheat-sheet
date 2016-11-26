@@ -3,7 +3,7 @@ body {
 }
 
 .wrapper {
-	@include outer-container(90%);
+	@include outer-container(95%);
 } 
 
 
@@ -59,47 +59,84 @@ body {
 /*MAIN CONTENT */
 
 	.cheat-sheet {
-		@include span-columns(10);		
+		@include span-columns(12);		
 
 		text-align: center;
 		background: #EEE; 
+		margin-bottom: 1em;
 
 		>.fullwidth {
 			padding: 1em 1em;
 			text-align: center;
-			background: #AAA;
+			background: #224;
+
 		}
 
-		div:first-child { 
-
-
-		};
 	}
 
 
 	.fullwidth {
 		@include span-columns(12);
+		@include omega(auto);
+
+		background: tomato;
+
+		h2, form {
+			display: inline-block;
+		}
+
+		h2 {
+			line-height: 1.6;
+			color: #EEE;
+			text-shadow: 0 1px 1px rgba(0,0,0, .5);
+			text-align: left;
+			@include span-columns(9);
+		}
+
+		form {
+			@include span-columns(3);
+		}
 	}
 
+/*#439adc
+#2189cb*/
+	.cheat-list {
+			h3 {
+				color: #EEE;
+				background: #2189cb;
+				border-bottom: solid 1px #1078ba;
+				padding-top: .5em;
+				padding-bottom: .5em;
+				text-align: center;
+/*				text-transform: uppercase;*/
+/*				margin: 3em auto 1em;*/
+			}
+	}
 
 	.entry-list {
 		text-align: center;
 		@include row();
 		padding: 0;
+/*		padding-bottom: .5em;*/
 		list-style-type: none;
-		margin: .5em;
-		background: #E27;
+		margin: 0;
+		color: #EEF;
+		background: #222;
+
+/*		hr {
+			margin: 0;
+		}*/
 
 		.entry {
 			@include media($desktop) {
-				@include span-columns(4);				
+				@include span-columns(4);						
 				@include omega(3n);
 			}
 
-			padding: .5em 1em;
+			padding: 0 .5em .5em .5em;
 
 			li:nth-child(2) {
-				margin-top: .5em;
+/*				margin-top: .3em;*/
 			}
 /*			background: #D04;*/
 
@@ -118,7 +155,7 @@ body {
 
 		}
 	}
-
+/*
 	.group-heading {
 		@include span-columns(12);
 		background: #501;
@@ -129,5 +166,5 @@ body {
 	.cheat-group {
 		@include span-columns(6);
 		background: #FCD;
-	}
+	}*/
 

@@ -10,16 +10,24 @@
  <body>
 	<header class="centered-navigation" role="banner">
 	  <div class="centered-navigation-wrapper">
-	    <a href="javascript:void(0)" class="mobile-logo">
+<!-- 	    <a href="javascript:void(0)" class="mobile-logo">
 	      <img src="https://raw.githubusercontent.com/thoughtbot/refills/master/source/images/placeholder_square.png" alt="Logo image">
-	    </a>
+	    </a> -->
 	    <a href="javascript:void(0)" id="js-centered-navigation-mobile-menu" class="centered-navigation-mobile-menu">MENU</a>
 	    <nav role="navigation">
 	      <ul id="js-centered-navigation-menu" class="centered-navigation-menu show">
-	        <li class="nav-link"><a class="nav-btn" href="javascript:void(0)"><img src="img/git_logo.png" alt="Git Logo"><span>Git</span></a></li>
-	        <li class="nav-link"><a class="nav-btn" href="javascript:void(0)"><img src="img/terminal_logo.png" alt="Git Logo"><span>Terminal</span></a></li>
-	        <li class="nav-link"><a class="nav-btn" href="javascript:void(0)"><img src="img/gulp_logo.png" alt="Gulp Logo"><span>Gulp</span></a></li>
-	        <li class="nav-link"><a class="nav-btn" href="javascript:void(0)"><img src="img/bourbon_logo.png" alt="Gulp Logo"><span>Bourbon</span></a></li>
+	        <li class="nav-link">
+	        	<a class="nav-btn" href="javascript:void(0)"><img src="img/git_logo.png" alt="Git Logo"><span>Git</span></a>
+	        </li>
+	        <li class="nav-link">
+	        	<a class="nav-btn" href="javascript:void(0)"><img src="img/terminal_logo.png" alt="Terminal Logo"><span>Terminal</span></a>
+	        </li>
+	        <li class="nav-link">
+	        	<a class="nav-btn" href="javascript:void(0)"><img src="img/gulp_logo.png" alt="Gulp Logo"><span>Gulp</span></a>
+	        </li>
+	        <li class="nav-link">
+	        	<a class="nav-btn" href="javascript:void(0)"><img src="img/bourbon_logo.png" alt="Bourbon Logo"><span>Bourbon</span></a>
+	        </li>
 <!-- 	        <li class="nav-link logo">
 	          <a href="javascript:void(0)" class="logo">
 	            <img src="https://raw.githubusercontent.com/thoughtbot/refills/master/source/images/placeholder_square.png" alt="Logo image">
@@ -33,12 +41,17 @@
 <div class="wrapper">
 	<div class="cheat-sheet">
 		<div class="fullwidth">
-			<h2 data-bind="text: myListDisplay"></h1>			
+			<h2 data-bind="text: myListDisplay"></h2>
+			<form class="search-bar" role="search">
+			  <input type="search" placeholder="Filter Cheats" data-bind="value: filter, valueUpdate: 'keyup'">
+			</form>		
 		</div>
-		<div data-bind="foreach: cheatList">
+	</div>
+
+		<div class="cheat-list" data-bind="foreach: cheatList">
 			<h3 data-bind="text: name"></h3>
-			<ul class="entry-list" data-bind="foreach: entries">
-				<div class="entry" data-bind="visible: $root.filtered">
+			<ul class="entry-list" data-bind="foreach: $root.filterEntries($data)">
+				<div class="entry">
 					<li><a href="javascript:void(0)" class="command" data-bind="text: command" role="button"></a></li>
 					<li data-bind="text: description"></li>					
 				</div>
@@ -46,18 +59,15 @@
 			
 			</ul>
 		</div>
-	</div>
-	<div class="user-input">
+<!-- 	</div> -->
+<!-- 	<div class="user-input">
 		<h2>User Input</h2>
 
 
 		<form class="search-bar" role="search">
 		  <input type="search" placeholder="Filter Cheats" data-bind="value: filter, valueUpdate: 'keyup'"/>
-<!-- 		  <button type="submit" >
-		    <img src="https://raw.githubusercontent.com/thoughtbot/refills/master/source/images/search-icon-black.png" alt="Search Icon">
-		  </button> -->
 		</form>
-	</div>
+	</div> -->
 
 
 

@@ -309,7 +309,12 @@
 					"command" : "@include word-wrap;",
 					"description": "Forces long text (like URLs) to wrap instead of breaking your layout. It uses the ($word-wrap)argument, with a default value of break-word.",
 					"tag": ["wrap", "text"]
-				}				
+				},
+				{
+					"command" : "@include triangle(12px 6px, gray lavender, up-left);",
+					"description": "Creates a triangle. Mixin takes ($size, $color, $direction). $size accepts width (and) height. $color accepts foreground (and) background color. $direction: up, down, left, right, up-right, up-left, down-right, down-left",
+					"tag": ["triangle", "shape"]
+				}									
 				]
 			},
 			{
@@ -340,7 +345,62 @@
 					"tag": ["function", "shade", "darken"]		
 				}]
 			}			
-			]
+			],
+"neat": [
+			{
+				"Installation": 
+				[{
+					"command" : "gem install neat",
+					"description": "Install the gem.",
+					"tag": ["install", "gem", "neat"]
+				},
+				{
+					"command" : "neat install",
+					"description": "Install neat into local project (creates a neat folder)",
+					"tag": ["install", "local", "neat"]		
+				},
+				{
+					"command" : "@import \"neat/neat\";",
+					"description": "Import the mixins at the beginning of your stylesheet(s)",
+					"tag": ["import", "setup", "neat"]		
+				}]
+			},
+			{
+				"Mixins": 
+				[{
+					"command" : "@mixin direction-context($direction: left-to-right) { ... }",
+					"description": "Changes the direction property used by other mixins called in the code block argument. $direction can be left-to-right or right-to-left.",
+					"tag": ["animation"]
+				},
+				{
+					"command" : "@mixin media($query, $total-columns: $grid-columns) { ... };",
+					"description": "Creates a media-query block with an optional grid context(total number of columns in grid).",
+					"tag": ["media", "columns", "media-query"]		
+				}				]
+			},
+			{
+				"Variables": 
+				[{
+					"command" : "$column: 4.2358em default!;",
+					"description": "Sets the relative width of a single grid column. ",
+					"tag": ["column", "variable"]	
+				},
+				{
+					"command" : "$visual-grid: false !default;",
+					"description": "Display the visual grid by setting to true.",
+					"tag": ["visual", "grid", "variable"]	
+				}]
+			},
+			{
+				"Functions": 
+				[{
+					"command" : "@function new-breakpoint($query, $total-columns: $grid-columns) { ... }",
+					"description": "Returns a media context (media query / grid context) that can be stored and passed to media() as a single argument.",
+					"tag": ["function", "media", "breakpoint"]
+				}]
+
+			}			
+			]			
 
 
 }

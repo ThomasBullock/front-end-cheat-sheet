@@ -24,8 +24,6 @@ body {
 
 
 	.nav-btn {
-/*		@include button;*/
-/*		line-height: 25px;*/
 		padding: 1px 6px 1px 6px;
 
 		img {
@@ -72,15 +70,22 @@ body {
 			background: #224;
 
 		}
-
 	}
-
 
 	.fullwidth {
 		@include span-columns(12);
 		@include omega(auto);
+		position: relative;
 
-		background: tomato;
+		.tech-link {
+			width: 35px;
+			float: left;
+			margin-right: 3px;
+
+			img {
+				width:100%;
+			}
+		}
 
 		h2, form {
 			display: inline-block;
@@ -90,17 +95,42 @@ body {
 			line-height: 1.6;
 			color: #EEE;
 			text-shadow: 0 1px 1px rgba(0,0,0, .5);
-			text-align: left;
-			@include span-columns(9);
+			float: left;
+/*			@include span-columns(8);*/
 		}
 
 		form {
-			@include span-columns(3);
+			@include media($desktop) {
+				@include span-columns(3);
+				float: right;
+			}
+
+			@include media($tablet) {
+				@include span-columns(3);
+				float: right;
+			}
+
+			display: block;
+		}
+
+		.message {
+			@include media($phone) {
+				left: 230px;			
+			}
+			display: none;
+			position: absolute;
+			width: 220px;
+			top: 18px;
+			margin: auto;
+			left: 0;
+			right: 0;
+			border-radius: 4px;
+			color: #1078ba;
+			padding: 2px 4px;
+			border: solid 1px #1078ba;
 		}
 	}
 
-/*#439adc
-#2189cb*/
 	.cheat-list {
 			h3 {
 				color: #EEE;
@@ -109,8 +139,6 @@ body {
 				padding-top: .5em;
 				padding-bottom: .5em;
 				text-align: center;
-/*				text-transform: uppercase;*/
-/*				margin: 3em auto 1em;*/
 			}
 	}
 
@@ -123,10 +151,6 @@ body {
 		margin: 0;
 		color: #EEF;
 		background: #222;
-
-/*		hr {
-			margin: 0;
-		}*/
 
 		.entry {
 			@include media($desktop) {

@@ -865,8 +865,6 @@ form.search-bar {
     margin-bottom: 5px;
     height: 45px; }
   .centered-navigation-menu .nav-btn {
-    /*		@include button;*/
-    /*		line-height: 25px;*/
     padding: 1px 6px 1px 6px; }
     .centered-navigation-menu .nav-btn img {
       margin-right: .3em;
@@ -910,43 +908,68 @@ form.search-bar {
   display: block;
   margin-right: 2.35765%;
   width: 100%;
-  background: tomato; }
+  position: relative; }
   .fullwidth:last-child {
     margin-right: 0; }
   .fullwidth:last-child {
     margin-right: 0; }
+  .fullwidth .tech-link {
+    width: 35px;
+    float: left;
+    margin-right: 3px; }
+    .fullwidth .tech-link img {
+      width: 100%; }
   .fullwidth h2, .fullwidth form {
     display: inline-block; }
   .fullwidth h2 {
     line-height: 1.6;
     color: #EEE;
     text-shadow: 0 1px 1px rgba(0, 0, 0, 0.5);
-    text-align: left;
     float: left;
-    display: block;
-    margin-right: 2.35765%;
-    width: 74.41059%; }
-    .fullwidth h2:last-child {
-      margin-right: 0; }
+    /*			@include span-columns(8);*/ }
   .fullwidth form {
-    float: left;
-    display: block;
-    margin-right: 2.35765%;
-    width: 23.23176%; }
-    .fullwidth form:last-child {
-      margin-right: 0; }
+    display: block; }
+    @media screen and (min-width: 992px) {
+      .fullwidth form {
+        float: left;
+        display: block;
+        margin-right: 2.35765%;
+        width: 23.23176%;
+        float: right; }
+        .fullwidth form:last-child {
+          margin-right: 0; } }
+    @media screen and (min-width: 768px) and (max-width: 991px) {
+      .fullwidth form {
+        float: left;
+        display: block;
+        margin-right: 2.35765%;
+        width: 23.23176%;
+        float: right; }
+        .fullwidth form:last-child {
+          margin-right: 0; } }
+  .fullwidth .message {
+    display: none;
+    position: absolute;
+    width: 220px;
+    top: 18px;
+    margin: auto;
+    left: 0;
+    right: 0;
+    border-radius: 4px;
+    color: #1078ba;
+    padding: 2px 4px;
+    border: solid 1px #1078ba; }
+    @media screen and (max-width: 767px) {
+      .fullwidth .message {
+        left: 230px; } }
 
-/*#439adc
-#2189cb*/
 .cheat-list h3 {
   color: #EEE;
   background: #2189cb;
   border-bottom: solid 1px #1078ba;
   padding-top: .5em;
   padding-bottom: .5em;
-  text-align: center;
-  /*				text-transform: uppercase;*/
-  /*				margin: 3em auto 1em;*/ }
+  text-align: center; }
 
 .entry-list {
   text-align: center;
@@ -956,10 +979,7 @@ form.search-bar {
   list-style-type: none;
   margin: 0;
   color: #EEF;
-  background: #222;
-  /*		hr {
-			margin: 0;
-		}*/ }
+  background: #222; }
   .entry-list::after {
     clear: both;
     content: "";
@@ -992,10 +1012,10 @@ form.search-bar {
       position: relative;
       display: inline-block;
       text-shadow: 0 1px 1px rgba(10, 10, 30, 0.5);
-      background-image: -webkit-linear-gradient(#62b9fb 0, #4096d8 100%);
-      background-image: linear-gradient(to   , #4096d8 100%);
+      background-image: -webkit-linear-gradient(#62b9fb 0, #3086c8 100%);
+      background-image: linear-gradient(to   , #3086c8 100%);
       /*    background-color: #55acee;*/
-      box-shadow: 0px 5px 0px 0px #2B82C4;
+      box-shadow: 0px 5px 0px 0px #1A71B3;
       /*				border-radius: 10px;
 				min-width: 100%;
 				padding: 2px 5px;

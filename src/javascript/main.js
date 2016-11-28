@@ -5,6 +5,7 @@
 
 	// Data/Model Object
 	var data = {
+		links: {"Git": "https://git-scm.com/", "jQuery": "http://api.jquery.com/", "Terminal": "https://developer.apple.com/library/content/documentation/OpenSource/Conceptual/ShellScripting/CommandLInePrimer/CommandLine.html", "Gulp": "http://gulpjs.com/", "Bourbon": "http://bourbon.io/", "Neat": "http://neat.bourbon.io/"},
 		init: function() {
 			$.getJSON('data/cheatsheet.json', function(response){
 				console.log(response)
@@ -52,6 +53,13 @@
 		self.myListDisplay = ko.computed(function(){
 			return self.myList() + " Cheat Sheet";
 		})
+		self.link = ko.computed(function(){
+			console.log(data.links);
+			return data.links[self.myList()];
+		})
+		self.icon = ko.computed(function(){
+			return "/img/" + self.myList().toLowerCase() + "_logo.png"
+		})
 		self.cheatList = ko.observableArray();
 		self.filter = ko.observable();
 
@@ -76,12 +84,11 @@
         }
     };
 
-
 		$('.nav-btn').on('click', function(){
 			self.filter(null)
 			var select = this.lastChild.innerText;
 			self.myList(select);		
-			console.log(select);	
+			// console.log(select);	
 			// console.log(self[JSON.stringify(select)]);
 			self.buildList(select);
 		})
@@ -90,6 +97,8 @@
 			    text: function(trigger) {
 			    	 // console.log(trigger);
 			    	 // console.log(this);
+
+			    $('.message').fadeIn().delay(1000).fadeOut();
        				 return trigger.innerText;
     			}
 		});
@@ -98,7 +107,11 @@
 		self.copy.on('success', function(e) {
 	    console.info('Text:', e.text);
 	    e.clearSelection();
-	});
+		});
+
+		if($('.message').css('display') !== 'none') {
+			console.log('message visible')
+		}
 
 		self.buildList = function(name) {
 

@@ -12,6 +12,7 @@ gulp.task("concatScripts", function(){
 		return gulp.src([
 			'src/javascript/knockout-3.4.0.js', 
 			'node_modules/jquery/dist/jquery.min.js',
+			'node_modules/clipboard/dist/clipboard.js',
 			'src/javascript/bourbon-refills.js',
 			'src/javascript/main.js'])
 		.pipe(maps.init())

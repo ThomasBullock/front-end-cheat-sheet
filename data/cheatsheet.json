@@ -1,5 +1,5 @@
 {
-	"git": [
+	"Git": [
 			{
 				"Create": 
 				[{
@@ -64,32 +64,32 @@
 				[{
 					"command" : "git branch -av",
 					"description": "List all existing branches.",
-					"tag": ["branch"]
+					"tag": ["branch", "list", "all"]
 				},
 				{
 					"command" : "git checkout mybranch",
 					"description": "Switch to mybranch",
-					"tag": ["branch"]
+					"tag": ["branch", "checkout"]
 				},
 				{
 					"command" : "git branch mybranch",
 					"description": "Create a new branch called mybranch",
-					"tag": ["branch"]
+					"tag": ["branch", "create", "new"]
 				},
 				{
 					"command" : "git checkout --track http://yourUrl.com/repo.git",
 					"description": "Create a new tracking branch based on a remote branch.",
-					"tag": ["branch"]
+					"tag": ["branch", "checkout"]
 				},
 				{
 					"command" : "git branch -d mybranch",
 					"description": "delete local branch called mybranch",
-					"tag": ["branch"]
+					"tag": ["branch", "delete"]
 				},
 				{
 					"command" : "git tag mytag",
 					"description": "Mark current commit with a tag called mytag",
-					"tag": ["branch"]
+					"tag": ["branch", "tag", "mark"]
 				}]
 			},
 			{
@@ -98,11 +98,6 @@
 					"command" : "git remote -v",
 					"description": "List all remotes",
 					"tag": ["remote", "all"]
-				},
-				{
-					"command" : "git remote show myremote",
-					"description": "Show infomation about a remote.",
-					"tag": ["remote", "show"]
 				},
 				{
 					"command" : "git remote show myremote",
@@ -129,7 +124,7 @@
 				}]
 			}										
 			],
-	"gulp": [
+	"Gulp": [
 			{
 				"Setup": 
 				[{
@@ -176,7 +171,70 @@
 				]
 			}
 			],
-		"terminal": [
+	"jQuery": [
+			{
+				"Selectors": 
+				[{
+					"command" : "$( 'form p' )",
+					"description": "Selects all paragraph elements that are within a form element.",
+					"tag": ["selectors", "within", "inside", "contain"]
+				},
+				{
+					"command" : "$( 'parent > child' )",
+					"description": "Selects all direct specified child elements of specified parent.",
+					"tag": ["selectors", "parent > child", "parent", "child"]
+				},
+				{
+					"command" : "$('a ~ img')",
+					"description": "Selects all <a> elements that are preceeded by an <img> element",
+					"tag": ["selectors", "sibling", "previous", "preceed", "before"]
+				},
+				{
+					"command" : "$('a + img')",
+					"description": "Select all <img> elements that have the same parent as the <a> element and are immediately preceeded by the <a> element.",
+					"tag": ["selectors", "sibling", "next", "preceed"]
+				},										
+				{
+					"command" : "$('a[href$=.jpg]') ",
+					"description": "Selects all <a> tags with a href attribute that ends in .jpg.",
+					"tag": ["selectors", "attribute", "ends"]
+				},				
+				{
+					"command" : "$( 'tr:last' )",
+					"description": "Selects the last matched element. In this case a <tr>",
+					"tag": ["selectors" , "last", "basic filters", "filters"]		
+				}]
+			},
+			{
+				"Attributes and CSS": 
+				[{
+					"command" : ".attr( 'src', 'myImgUrl' )",
+					"description": "Can be used to get or set (with optional second value) a selected elements specified attribute.",
+					"tag": ["attr", "attribute", "get", "set"]
+				},
+				{
+					"command" : ".prop( 'checked', true );",
+					"description": "Can be used to get or set (with optional second value) a selected elements specified property.",
+					"tag": ["prop", "property", "get", "set"]
+				},
+				{
+					"command" : ".removeAttr( 'title' )",
+					"description": "Can be used to remove an attribute (in this case a title) from a an element.",
+					"tag": ["attr", "attribute", "remove", "delete"]
+				},
+				{
+					"command" : ".addClass( 'myClass myOtherClass' )",
+					"description": "Adds classes named myClass and myOtherClass to selected element.",
+					"tag": ["css", "class", "add"]
+				},
+				{
+					"command" : ".removeClass( 'myClass myOtherClass' )",
+					"description": "Removes classes named myClass and myOtherClass from selected element.",
+					"tag": ["css", "class", "remove"]
+				}			]
+			}		
+			],	
+		"Terminal": [
 			{
 				"Core Commands": 
 				[{
@@ -241,7 +299,7 @@
 				]
 			}
 			],
-"bourbon": [
+"Bourbon": [
 			{
 				"Installation": 
 				[{
@@ -346,7 +404,7 @@
 				}]
 			}			
 			],
-"neat": [
+"Neat": [
 			{
 				"Installation": 
 				[{
@@ -386,7 +444,7 @@
 					"tag": ["column", "variable"]	
 				},
 				{
-					"command" : "$visual-grid: false !default;",
+					"command" : "$visual-grid: true !default;",
 					"description": "Display the visual grid by setting to true.",
 					"tag": ["visual", "grid", "variable"]	
 				}]

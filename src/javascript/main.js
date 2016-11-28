@@ -10,10 +10,14 @@
 				console.log(response)
 				// data.cheats = response;
 				// initialize();
-				data.git = response.git;
-				data.terminal = response.terminal;
-				data.bourbon = response.bourbon;
-				data.gulp = response.gulp;				
+				data.Git = response.Git;
+				data.Terminal = response.Terminal;
+				data.Bourbon = response.Bourbon;
+				data.Gulp = response.Gulp;
+				data.jQuery = response.jQuery;
+				data.Neat = response.Neat;
+
+				app.viewModel.buildList("Git");				
 			});
 		}
 	}
@@ -44,7 +48,7 @@
 
 		var self = this;
 
-		self.myList = ko.observable();
+		self.myList = ko.observable("Git");
 		self.myListDisplay = ko.computed(function(){
 			return self.myList() + " Cheat Sheet";
 		})
@@ -77,9 +81,9 @@
 			self.filter(null)
 			var select = this.lastChild.innerText;
 			self.myList(select);		
-			// console.log(select);	
+			console.log(select);	
 			// console.log(self[JSON.stringify(select)]);
-			self.buildList(select.toLowerCase());
+			self.buildList(select);
 		})
 
 		self.copy = new Clipboard('.command', {

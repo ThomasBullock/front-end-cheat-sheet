@@ -67,19 +67,24 @@
 					"tag": ["branch", "list", "all"]
 				},
 				{
-					"command" : "git checkout mybranch",
-					"description": "Switch to mybranch",
-					"tag": ["branch", "checkout"]
-				},
-				{
 					"command" : "git branch mybranch",
 					"description": "Create a new branch called mybranch",
 					"tag": ["branch", "create", "new"]
 				},
 				{
+					"command" : "git checkout mybranch",
+					"description": "Switch to mybranch",
+					"tag": ["branch", "checkout", "switch"]
+				},
+				{
+					"command" : "git checkout -b mybranch",
+					"description": "Create a new branch called mybranch and switch to it.",
+					"tag": ["branch", "checkout", "create", "new", "switch"]
+				},				
+				{
 					"command" : "git checkout --track http://yourUrl.com/repo.git",
 					"description": "Create a new tracking branch based on a remote branch.",
-					"tag": ["branch", "checkout"]
+					"tag": ["branch", "checkout", "create", "new"]
 				},
 				{
 					"command" : "git branch -d mybranch",
@@ -108,6 +113,21 @@
 					"command" : "git remote add myremote myurl",
 					"description": "Add new remote repository named myremote at myurl",
 					"tag": ["remote", "show"]
+				},
+				{
+					"command" : "git fetch origin",
+					"description": "Download all changes from remote called origin but dont integrate into HEAD.",
+					"tag": ["remote", "fetch", "download"]
+				},
+				{
+					"command" : "git pull origin master",
+					"description": "Download all changes from master branch on remote called origin and merge them into HEAD.",
+					"tag": ["remote", "pull", "download", "merge"]
+				},
+				{
+					"command" : "git push origin master",
+					"description": "Upload all changes to master branch on remote called origin.",
+					"tag": ["remote", "push", "upload", "publish"]
 				}]
 			},			
 			{
@@ -156,12 +176,12 @@
 				[{
 					"command" : "gulp.task('mytask', function() { // Do stuff });",
 					"description": "Define a task.",
-					"tag": ["task"]	
+					"tag": ["task", "define"]	
 				},
 				{
 					"command" : "gulp.task('mytask', ['array', 'of', 'task', 'names'], function() { // Do stuff });",
 					"description": "Define a task. with an array of tasks to be executed and completed before your task will run.",
-					"tag": ["task"]
+					"tag": ["task", "define"]
 				},
 				{
 					"command" : "gulp.watch('path/to/**/*.scss', ['name of task to run'])",
@@ -174,35 +194,62 @@
 	"jQuery": [
 			{
 				"Selectors": 
-				[{
+				[
+				{
+					"command" : "$( 'p, span, a.myClass' )",
+					"description": "Multiple selector that selects the combined results of the comma separated selectors <p>, <span> and any <a> element containing myClass.",
+					"tag": ["selectors", "multiple", "combined"]
+				},					
+					{
 					"command" : "$( 'form p' )",
-					"description": "Selects all paragraph elements that are within a form element.",
-					"tag": ["selectors", "within", "inside", "contain"]
+					"description": "Descendant Selector that Selects all paragraph elements that are within a form element.",
+					"tag": ["selectors", "within", "inside", "contain", "ancestor", "ancestor descendant","descendant"]
 				},
+
 				{
 					"command" : "$( 'parent > child' )",
 					"description": "Selects all direct specified child elements of specified parent.",
 					"tag": ["selectors", "parent > child", "parent", "child"]
 				},
 				{
-					"command" : "$('a ~ img')",
+					"command" : "$( 'a ~ img' )",
 					"description": "Selects all <a> elements that are preceeded by an <img> element",
 					"tag": ["selectors", "sibling", "previous", "preceed", "before"]
 				},
 				{
-					"command" : "$('a + img')",
+					"command" : "$( 'a + img' )",
 					"description": "Select all <img> elements that have the same parent as the <a> element and are immediately preceeded by the <a> element.",
 					"tag": ["selectors", "sibling", "next", "preceed"]
-				},										
+				},
 				{
-					"command" : "$('a[href$=.jpg]') ",
-					"description": "Selects all <a> tags with a href attribute that ends in .jpg.",
-					"tag": ["selectors", "attribute", "ends"]
-				},				
+					"command" : "$( 'td:first' )",
+					"description": "Selects the first matched element. In this case a <td>. It is equivalent to $( 'td:eq( 0 )' )",
+					"tag": ["selectors" , "first", "basic filters", "filters"]		
+				},					
 				{
 					"command" : "$( 'tr:last' )",
 					"description": "Selects the last matched element. In this case a <tr>",
 					"tag": ["selectors" , "last", "basic filters", "filters"]		
+				},																
+				{
+					"command" : "$( 'td:eq( 2 )' )",
+					"description": "Filter by a zero based index the elements that have matched the expressions that precede them. In this case returning the 3rd selected <td> element",
+					"tag": ["selectors", "eq", "equal", "filters"]		
+				},
+				{
+					"command" : "$( 'a[href$=.jpg]' ) ",
+					"description": "Selects all <a> tags with a href attribute that ends in .jpg.",
+					"tag": ["selectors", "attribute", "ends"]
+				},
+				{
+					"command" : "$( 'span:nth-of-type(2)' )",
+					"description": "Selects the 2nd child (using 0 index counting) in relation to siblings with the same element name.",
+					"tag": ["selectors", "nth", "nth-of-type", "child"]
+				},				
+				{
+					"command" : "$( 'div button:only-child' )",
+					"description": "Selects all elements that are the only child of their parent. If the parent has other children nothing is matched.",
+					"tag": ["selectors", "child", "only-child"]
 				}]
 			},
 			{
@@ -223,13 +270,13 @@
 					"tag": ["attr", "attribute", "remove", "delete"]
 				},
 				{
-					"command" : ".addClass( 'myClass myOtherClass' )",
+					"command" : ".addClass( 'myClass' )",
 					"description": "Adds classes named myClass and myOtherClass to selected element.",
 					"tag": ["css", "class", "add"]
 				},
 				{
-					"command" : ".removeClass( 'myClass myOtherClass' )",
-					"description": "Removes classes named myClass and myOtherClass from selected element.",
+					"command" : ".removeClass( 'myClass' )",
+					"description": "Removes classes named myClass from selected element. Accepts multiple space seperated classes",
 					"tag": ["css", "class", "remove"]
 				}			]
 			}		
@@ -243,7 +290,7 @@
 					"tag": ["change", "home"]	
 				},
 				{
-					"command" : "cd ..;",
+					"command" : "cd ..",
 					"description": "Change directory to the current directory's parent directory",
 					"tag": ["change", "up", "parent"]
 				},
@@ -253,58 +300,127 @@
 					"tag": ["list", "hidden"]
 				},
 				{
-					"command" : "open [myfile]",
+					"command" : "open myfile",
 					"description": "Open file named myfile",
 					"tag": ["open", "file"]
-				},				
+				},						
 				{
 					"command" : "clear",
 					"description": "Clear terminal screen.",
 					"tag": ["clear"]
-				}						
+				},
+				{
+					"command" : "ps aux",
+					"description": "Returns a list of processes. a - all users. u - processes owner. x - processes not attached to terminal.",
+					"tag": ["ps", "list"]
+				},				
+				{
+					"command" : "top -u",
+					"description": "List OS X processes sorted by processes utilisation.",
+					"tag": ["list", "top", "processes"]
+				},
+				{
+					"command" : "nano myfile.txt",
+					"description": "Opens the file myfile.yxy using the nano editor.",
+					"tag": ["open", "nano", "editor"]
+				},
+				{
+					"command" : "vim myfile.txt",
+					"description": "Opens the file myfile.txt using the vim editor.",
+					"tag": ["open", "vim", "editor"]
+				}																			
 				]
 			},		
 			{
 				"File Management": 
 				[{
-					"command" : "touch [myfile];",
+					"command" : "touch myfile;",
 					"description": "Create a new file [myfile].",
 					"tag": ["touch", "create"]
 				},
 				{
 					"command" : "pwd",
 					"description": "Display path to working directory",
-					"tag": ["path" , "directory"]		
+					"tag": ["path" , "directory", "pwd"]		
 				},
 				{
-					"command" : "mkdir [mydir]",
-					"description": "make directory [mydir]",
-					"tag": ["make" , "create"]		
+					"command" : "mkdir mydir",
+					"description": "make directory called mydir",
+					"tag": ["make" , "create", "directory"]		
 				},				
 				{
-					"command" : "rm [myfile]",
-					"description": "remove file [myfile]",
+					"command" : "rm myfile",
+					"description": "remove file myfile",
 					"tag": ["remove" , "delete"]		
 				},
 				{
-					"command" : "rm -r [mydir]",
-					"description": "remove directory [mydir]",
-					"tag": ["remove" , "delete"]		
+					"command" : "rm -r mydir",
+					"description": "remove directory mydir",
+					"tag": ["remove" , "delete", "directory"]		
 				},
 				{
-					"command" : "cp [myfile] [mynewfile]",
+					"command" : "mv myfile mynewfile",
+					"description": "rename myfile to mynewfile",
+					"tag": ["copy", "file", "rename", "move"]		
+				},
+				{
+					"command" : "mv myfile documents",
+					"description": "move myfile into documents folder (overwriting any files of same name)",
+					"tag": ["copy" , "file", "rename", "move"]		
+				},										
+				{
+					"command" : "cp myfile mynewfile",
 					"description": "Copy myfile to mynewfile",
 					"tag": ["copy" , "file"]		
 				}				
 				]
-			}
+			},
+			{
+				"Searching": 
+				[{
+					"command" : "find documents -name \"myfile.txt\"",
+					"description": "Searches documents folder for file named myfile.txt",
+					"tag": ["find", "file", "search"]
+				},	
+				{
+					"command" : "grep -i \"dogs\" ~/dogs.txt",
+					"description": "Search dogs.txt for instances of the word dog. Case insensitive using the -i flag ",
+					"tag": ["grep", "serach", "file", "find"]	
+				}]
+			},				
+			{
+				"Gem Installation": 
+				[{
+					"command" : "gem query --local",
+					"description": "Lists all installed gems.",
+					"tag": ["hidden", "files"]	
+				},
+				{
+					"command" : "sudo gem install -n /usr/local/bin 'mygem'",
+					"description": "Solution to 'root operation not permitted' on El Capitan when trying to install gems like compass",
+					"tag": ["root", "root operation not permitted", "install", "gem", "el capitan", "fails"]	
+				}]
+			},	
+			{
+				"Extras": 
+				[{
+					"command" : "defaults write com.apple.finder AppleShowAllFiles TRUE && killall Finder",
+					"description": "Show hidden files in OSX and restart finder.",
+					"tag": ["hidden", "files"]	
+				},
+				{
+					"command" : "python -m SimpleHTTPServer 8888",
+					"description": "Starts up a local server on port 8888. http://localhost:8888/",
+					"tag": ["python", "server", "SimpleHTTPServer"]	
+				}]
+			}	
 			],
 "Bourbon": [
 			{
 				"Installation": 
 				[{
 					"command" : "gem install bourbon",
-					"description": "Install the gem.",
+					"description": "Install the gem. May need to prefix Sudo. See terminal cheats in event of error.",
 					"tag": ["install", "gem"]
 				},
 				{
@@ -341,37 +457,37 @@
 				[{
 					"command" : "@include size(10em auto);",
 					"description": "Set width and height in a single statement. Accepts all units.",
-					"tag": ["size"]	
+					"tag": ["size", "dimensions", "height", "width", "styling"]	
 				},
 				{
 					"command" : "@include margin(null 10px 3em 20vh);",
-					"description": "Pargin mixin accepts up to four values, including null, and uses the directional-property mixin to map them to their respective directions.",
-					"tag": ["margin"]	
+					"description": "Margin mixin accepts up to four values, including null, and uses the directional-property mixin to map them to their respective directions.",
+					"tag": ["margin", "styling"]	
 				},
 				{
 					"command" : "@include padding(20vh null 10px 3em);",
 					"description": "Padding mixin accepts up to four values, including null, and uses the directional-property mixin to map them to their respective directions.",
-					"tag": ["padding"]	
+					"tag": ["padding", "styling"]	
 				},				
 				{
 					"command" : "@include position(relative, 0 null null 10em);",
 					"description": "A shorthand notation for positioning elements.",
-					"tag": ["position"]
+					"tag": ["position", "styling"]
 				},
 				{
 					"command" : "@include text-decoration(underline double rgb(124,213,224));",
 					"description": "A shorthand notation for text-decoration-color, text-decoration-line, and text-decoration-style. ",
-					"tag": ["text", "decoration"]
+					"tag": ["text", "decoration", "styling"]
 				},
 				{
 					"command" : "@include word-wrap;",
 					"description": "Forces long text (like URLs) to wrap instead of breaking your layout. It uses the ($word-wrap)argument, with a default value of break-word.",
-					"tag": ["wrap", "text"]
+					"tag": ["wrap", "text", "styling"]
 				},
 				{
 					"command" : "@include triangle(12px 6px, gray lavender, up-left);",
 					"description": "Creates a triangle. Mixin takes ($size, $color, $direction). $size accepts width (and) height. $color accepts foreground (and) background color. $direction: up, down, left, right, up-right, up-left, down-right, down-left",
-					"tag": ["triangle", "shape"]
+					"tag": ["triangle", "shape", "styling"]
 				}									
 				]
 			},
@@ -409,7 +525,7 @@
 				"Installation": 
 				[{
 					"command" : "gem install neat",
-					"description": "Install the gem.",
+					"description": "Install the gem. May need to prefix Sudo. See terminal cheats in event of error.",
 					"tag": ["install", "gem", "neat"]
 				},
 				{
@@ -426,28 +542,64 @@
 			{
 				"Mixins": 
 				[{
-					"command" : "@mixin direction-context($direction: left-to-right) { ... }",
+					"command" : "@include direction-context($direction: left-to-right) { ... };",
 					"description": "Changes the direction property used by other mixins called in the code block argument. $direction can be left-to-right or right-to-left.",
 					"tag": ["animation"]
 				},
 				{
-					"command" : "@mixin media($query, $total-columns: $grid-columns) { ... };",
+					"command" : "@include media($query, $total-columns: $grid-columns) { ... };",
 					"description": "Creates a media-query block with an optional grid context(total number of columns in grid).",
 					"tag": ["media", "columns", "media-query"]		
-				}				]
+				},
+				{
+					"command" : "@include omega(auto);",
+					"description": "Removes the element's gutter margin. Supported arguments are nth-child selectors and auto (targets last-child).",
+					"tag": ["omega", "remove", "guttering", "grid"]
+				},
+				{
+					"command" : "@include outer-container(100%);",
+					"description": "Creates an outer container with max-width equal to 100% with cleared floats and centered in the viewport.",
+					"tag": ["container", "center", "clearing", "max-width", "outer-container"]
+				},
+				{
+					"command" : "@include shift(3);",
+					"description": "Similar to bootstrap offset feature. Shifts column by specified number of columns. Negative numbers shift to the opposite direction",
+					"tag": ["shift", "offset", "move", "column", "grid"]
+				},
+				{
+					"command" : "@include span-columns(6);",
+					"description": "Specifies the number of columns an element should span. If the selector is nested the number of columns of its parent element should be passed as an argument as well.",
+					"tag": ["columns", "width", "grid", "span"]
+				},				
+				{
+					"command" : "@include clearfix;",
+					"description": "Includes a clearfix for containing floats. This mixin takes no parameters.",
+					"tag": ["containing", "floats", "clearing", "clearfix", "grid"]
+				}]
 			},
 			{
 				"Variables": 
 				[{
 					"command" : "$column: 4.2358em default!;",
-					"description": "Sets the relative width of a single grid column. ",
+					"description": "Sets the relative width of a single grid column.",
 					"tag": ["column", "variable"]	
 				},
 				{
+					"command" : "$max-width: 1200px !default;",
+					"description": "Sets the max-width property of the element that includes outer-container(). Set with the !global flag.",
+					"tag": ["max-width", "outer-container", "width"]	
+				},				
+				{
 					"command" : "$visual-grid: true !default;",
 					"description": "Display the visual grid by setting to true.",
-					"tag": ["visual", "grid", "variable"]	
-				}]
+					"tag": ["visual", "grid", "variable", "visible"]	
+				},
+				{
+					"command" : "$visual-grid-opacity: 0.4 !default;",
+					"description": "Sets the opacity property of the visual grid to 0.4.",
+					"tag": ["visual", "grid", "variable", "opacity"]	
+				}
+			]
 			},
 			{
 				"Functions": 

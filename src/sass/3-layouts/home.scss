@@ -4,6 +4,7 @@ body {
 
 .wrapper {
 	@include outer-container(95%);
+	padding-bottom: 77px;
 } 
 
 
@@ -80,7 +81,7 @@ body {
 		.tech-link {
 			width: 35px;
 			float: left;
-			margin-right: 3px;
+			margin-right: 12px;
 
 			img {
 				width:100%;
@@ -96,7 +97,6 @@ body {
 			color: #EEE;
 			text-shadow: 0 1px 1px rgba(0,0,0, .5);
 			float: left;
-/*			@include span-columns(8);*/
 		}
 
 		form {
@@ -134,11 +134,12 @@ body {
 	.cheat-list {
 			h3 {
 				color: #EEE;
-				background: #2189cb;
-				border-bottom: solid 1px #1078ba;
+				background: darken(#2189cb, 5%);
+				border-bottom: solid 1px darken(#1078ba, 10%) ;
 				padding-top: .5em;
 				padding-bottom: .5em;
 				text-align: center;
+				text-shadow: 0 1px 1px rgba(17, 17, 17, .5);
 			}
 	}
 
@@ -146,7 +147,6 @@ body {
 		text-align: center;
 		@include row();
 		padding: 0;
-/*		padding-bottom: .5em;*/
 		list-style-type: none;
 		margin: 0;
 		color: #EEF;
@@ -155,41 +155,20 @@ body {
 		.entry {
 			@include media($desktop) {
 				@include span-columns(4);						
-				@include omega(3n);
+				@include omega(3n);			
 			}
 
 			padding: 0 .5em .5em .5em;
 
-			li:nth-child(2) {
-/*				margin-top: .3em;*/
-			}
-/*			background: #D04;*/
-
 
 			.command {
 				@include btn;
-/*				border-radius: 10px;
-				min-width: 100%;
-				padding: 2px 5px;
-					box-shadow: -1px 2px 1px rgba(30, 10, 10, .3);		
-			*/
-				&:hover {
-/*					box-shadow: -1px 2px 1px rgba(30, 10, 10, .3);		*/
-				};
+				visibility: hidden;
+				min-height: 40px;
+
 			}
 
 		}
 	}
-/*
-	.group-heading {
-		@include span-columns(12);
-		background: #501;
-		color: #DCC;
-		padding: 1em;
-	}
 
-	.cheat-group {
-		@include span-columns(6);
-		background: #FCD;
-	}*/
 

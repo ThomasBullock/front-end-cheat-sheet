@@ -129,16 +129,18 @@ marginLeft:0},function(){return a.getBoundingClientRect().left}):0))+"px":void 0
 padding:"inner"+a,content:b,"":"outer"+a},function(c,d){n.fn[d]=function(d,e){var f=arguments.length&&(c||"boolean"!=typeof d),g=c||(d===!0||e===!0?"margin":"border");return Y(this,function(b,c,d){var e;return n.isWindow(b)?b.document.documentElement["client"+a]:9===b.nodeType?(e=b.documentElement,Math.max(b.body["scroll"+a],e["scroll"+a],b.body["offset"+a],e["offset"+a],e["client"+a])):void 0===d?n.css(b,c,g):n.style(b,c,d,g)},b,f?d:void 0,f,null)}})}),n.fn.extend({bind:function(a,b,c){return this.on(a,null,b,c)},unbind:function(a,b){return this.off(a,null,b)},delegate:function(a,b,c,d){return this.on(b,a,c,d)},undelegate:function(a,b,c){return 1===arguments.length?this.off(a,"**"):this.off(b,a||"**",c)}}),n.fn.size=function(){return this.length},n.fn.andSelf=n.fn.addBack,"function"==typeof define&&define.amd&&define("jquery",[],function(){return n});var nc=a.jQuery,oc=a.$;return n.noConflict=function(b){return a.$===n&&(a.$=oc),b&&a.jQuery===n&&(a.jQuery=nc),n},b||(a.jQuery=a.$=n),n});
 
 /*!
- * clipboard.js v1.5.15
+ * clipboard.js v1.6.1
  * https://zenorocha.github.io/clipboard.js
  *
  * Licensed MIT © Zeno Rocha
  */
 (function(f){if(typeof exports==="object"&&typeof module!=="undefined"){module.exports=f()}else if(typeof define==="function"&&define.amd){define([],f)}else{var g;if(typeof window!=="undefined"){g=window}else if(typeof global!=="undefined"){g=global}else if(typeof self!=="undefined"){g=self}else{g=this}g.Clipboard = f()}})(function(){var define,module,exports;return (function e(t,n,r){function s(o,u){if(!n[o]){if(!t[o]){var a=typeof require=="function"&&require;if(!u&&a)return a(o,!0);if(i)return i(o,!0);var f=new Error("Cannot find module '"+o+"'");throw f.code="MODULE_NOT_FOUND",f}var l=n[o]={exports:{}};t[o][0].call(l.exports,function(e){var n=t[o][1][e];return s(n?n:e)},l,l.exports,e,t,n,r)}return n[o].exports}var i=typeof require=="function"&&require;for(var o=0;o<r.length;o++)s(r[o]);return s})({1:[function(require,module,exports){
+var DOCUMENT_NODE_TYPE = 9;
+
 /**
  * A polyfill for Element.matches()
  */
-if (Element && !Element.prototype.matches) {
+if (typeof Element !== 'undefined' && !Element.prototype.matches) {
     var proto = Element.prototype;
 
     proto.matches = proto.matchesSelector ||
@@ -156,7 +158,7 @@ if (Element && !Element.prototype.matches) {
  * @return {Function}
  */
 function closest (element, selector) {
-    while (element && element !== document) {
+    while (element && element.nodeType !== DOCUMENT_NODE_TYPE) {
         if (element.matches(selector)) return element;
         element = element.parentNode;
     }
@@ -368,8 +370,18 @@ function select(element) {
         selectedText = element.value;
     }
     else if (element.nodeName === 'INPUT' || element.nodeName === 'TEXTAREA') {
-        element.focus();
+        var isReadOnly = element.hasAttribute('readonly');
+
+        if (!isReadOnly) {
+            element.setAttribute('readonly', '');
+        }
+
+        element.select();
         element.setSelectionRange(0, element.value.length);
+
+        if (!isReadOnly) {
+            element.removeAttribute('readonly');
+        }
 
         selectedText = element.value;
     }
@@ -580,7 +592,6 @@ module.exports = E;
                 this.fakeElem.style[isRTL ? 'right' : 'left'] = '-9999px';
                 // Move element to the same position vertically
                 var yPosition = window.pageYOffset || document.documentElement.scrollTop;
-                this.fakeElem.addEventListener('focus', window.scrollTo(0, yPosition));
                 this.fakeElem.style.top = yPosition + 'px';
 
                 this.fakeElem.setAttribute('readonly', '');
@@ -856,6 +867,20 @@ module.exports = E;
                     this.clipboardAction = null;
                 }
             }
+        }], [{
+            key: 'isSupported',
+            value: function isSupported() {
+                var action = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : ['copy', 'cut'];
+
+                var actions = typeof action === 'string' ? [action] : action;
+                var support = !!document.queryCommandSupported;
+
+                actions.forEach(function (action) {
+                    support = support && !!document.queryCommandSupported(action);
+                });
+
+                return support;
+            }
         }]);
 
         return Clipboard;
@@ -912,19 +937,19 @@ $(window).on("load resize",function(e) {
     });
   });
 }); 
-// $(document).ready(function(){
+$(document).ready(function(){
 
 	// console.log( "Application is running" );
-
+	const commands = document.querySelectorAll('.command');
+	commands.forEach( (elem) => {
+		elem.style.visibility = 'visible';
+	})
 
 	// Data/Model Object
 	var data = {
 		links: {"Git": "https://git-scm.com/", "jQuery": "http://api.jquery.com/", "Terminal": "https://developer.apple.com/library/content/documentation/OpenSource/Conceptual/ShellScripting/CommandLInePrimer/CommandLine.html", "Gulp": "http://gulpjs.com/", "Bourbon": "http://bourbon.io/", "Neat": "http://neat.bourbon.io/"},
 		init: function() {
 			$.getJSON('data/cheatsheet.json', function(response){
-				console.log(response)
-				// data.cheats = response;
-				// initialize();
 				data.Git = response.Git;
 				data.Terminal = response.Terminal;
 				data.Bourbon = response.Bourbon;
@@ -968,7 +993,6 @@ $(window).on("load resize",function(e) {
 			return self.myList() + " Cheat Sheet";
 		})
 		self.link = ko.computed(function(){
-			console.log(data.links);
 			return data.links[self.myList()];
 		})
 		self.icon = ko.computed(function(){
@@ -978,8 +1002,6 @@ $(window).on("load resize",function(e) {
 		self.filter = ko.observable();
 
     self.filterEntries = function (group) {
-        console.log(group)
-        // console.log(elem)
         var filter = self.filter();
         if(!filter) {
             return group.entries();
@@ -1002,22 +1024,16 @@ $(window).on("load resize",function(e) {
 			self.filter(null)
 			var select = this.lastChild.innerText;
 			self.myList(select);		
-			// console.log(select);	
-			// console.log(self[JSON.stringify(select)]);
 			self.buildList(select);
 		})
 
 		self.copy = new Clipboard('.command', {
 			    text: function(trigger) {
-			    	 // console.log(trigger);
-			    	 // console.log(this);
-
 			    $('.message').fadeIn().delay(1000).fadeOut();
        				 return trigger.innerText;
     			}
 		});
 
-		// Temp console 
 		self.copy.on('success', function(e) {
 	    console.info('Text:', e.text);
 	    e.clearSelection();
@@ -1033,7 +1049,6 @@ $(window).on("load resize",function(e) {
 			for (var i = 0; i < data[name].length; i++) {
 				self.cheatList.push(new Group(data[name][i]))
 			}
-			console.log(self.cheatList());
 		}
 	}
 
@@ -1043,7 +1058,6 @@ data.init();
 // put viewModel into var my so its accessable from the console
 // function view() {
 
-	console.log(data.cheats);
 	var app = { viewModel: new AppViewModel() };
 
 	// Activates knockout.js
@@ -1051,7 +1065,7 @@ data.init();
 
 // }
 
-// }) 
+}) 
 
 
 

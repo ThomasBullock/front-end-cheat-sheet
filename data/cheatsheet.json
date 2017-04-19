@@ -10,7 +10,7 @@
 				{
 					"command" : "git clone http://yourUrl.com/repo.git",
 					"description": "Clone an existing repository",
-					"tag": ["create", "clone"]
+					"tag": ["create", "clone", "copy"]
 				}]
 			},
 			{
@@ -18,7 +18,7 @@
 				[{
 					"command" : "git status",
 					"description": "Lists changed files in your working directory",
-					"tag": ["local changes", "status"]
+					"tag": ["local changes", "status", "info"]
 				},
 				{
 					"command" : "git diff",
@@ -38,7 +38,7 @@
 				{
 					"command" : "\"press i to start entering text and save by pressing esc and :wq and enter\"",
 					"description": "How to exit VIM if you commit without -m tag",
-					"tag": ["local changes"]
+					"tag": ["local changes", "vim", "commit"]
 				}]
 			},
 			{
@@ -46,17 +46,17 @@
 				[{
 					"command" : "git log",
 					"description": "Show all commits, newest first.",
-					"tag": ["log"]
+					"tag": ["history", "log"]
 				},
 				{
 					"command" : "git log -p myfile",
 					"description": "Show changes over time for myfile",
-					"tag": ["log"]
+					"tag": ["history","log", "time"]
 				},
 				{
 					"command" : "git blame myfile",
 					"description": "See who changed what/when in myfile",
-					"tag": ["blame"]
+					"tag": ["history", "blame"]
 				}]
 			},
 			{
@@ -64,37 +64,37 @@
 				[{
 					"command" : "git branch -av",
 					"description": "List all existing branches.",
-					"tag": ["branch", "list", "all"]
+					"tag": ["branches" ,"branch", "list", "all"]
 				},
 				{
 					"command" : "git branch mybranch",
 					"description": "Create a new branch called mybranch",
-					"tag": ["branch", "create", "new"]
+					"tag": ["branches" ,"branch", "create", "new"]
 				},
 				{
 					"command" : "git checkout mybranch",
 					"description": "Switch to mybranch",
-					"tag": ["branch", "checkout", "switch"]
+					"tag": ["branches" ,"branch", "checkout", "switch"]
 				},
 				{
 					"command" : "git checkout -b mybranch",
 					"description": "Create a new branch called mybranch and switch to it.",
-					"tag": ["branch", "checkout", "create", "new", "switch"]
+					"tag": ["branches" ,"branch", "checkout", "create", "new", "switch"]
 				},				
 				{
 					"command" : "git checkout --track http://yourUrl.com/repo.git",
 					"description": "Create a new tracking branch based on a remote branch.",
-					"tag": ["branch", "checkout", "create", "new"]
+					"tag": ["branches" ,"branch", "checkout", "create", "new"]
 				},
 				{
 					"command" : "git branch -d mybranch",
 					"description": "delete local branch called mybranch",
-					"tag": ["branch", "delete"]
+					"tag": ["branches" ,"branch", "delete"]
 				},
 				{
 					"command" : "git tag mytag",
 					"description": "Mark current commit with a tag called mytag",
-					"tag": ["branch", "tag", "mark"]
+					"tag": ["branches" ,"branch", "tag", "mark"]
 				}]
 			},
 			{
@@ -102,32 +102,32 @@
 				[{
 					"command" : "git remote -v",
 					"description": "List all remotes",
-					"tag": ["remote", "all"]
+					"tag": ["update", "publish", "remote", "all"]
 				},
 				{
 					"command" : "git remote show myremote",
 					"description": "Show infomation about a remote.",
-					"tag": ["remote", "show"]
+					"tag": ["update", "publish", "remote", "show"]
 				},
 				{
 					"command" : "git remote add myremote myurl",
 					"description": "Add new remote repository named myremote at myurl",
-					"tag": ["remote", "show"]
+					"tag": ["update", "publish", "remote", "show"]
 				},
 				{
 					"command" : "git fetch origin",
 					"description": "Download all changes from remote called origin but dont integrate into HEAD.",
-					"tag": ["remote", "fetch", "download"]
+					"tag": ["update", "publish", "remote", "fetch", "download"]
 				},
 				{
 					"command" : "git pull origin master",
 					"description": "Download all changes from master branch on remote called origin and merge them into HEAD.",
-					"tag": ["remote", "pull", "download", "merge"]
+					"tag": ["update", "publish", "remote", "pull", "download", "merge"]
 				},
 				{
 					"command" : "git push origin master",
 					"description": "Upload all changes to master branch on remote called origin.",
-					"tag": ["remote", "push", "upload", "publish"]
+					"tag": ["update", "publish", "remote", "push", "upload", "publish"]
 				}]
 			},			
 			{
@@ -135,12 +135,12 @@
 				[{
 					"command" : "git merge mybranch",
 					"description": "Merge mybranch into your current HEAD",
-					"tag": ["merge"]
+					"tag": ["merge", "head"]
 				},
 				{
 					"command" : "git rebase mybranch",
 					"description": "Rebase your current HEAD onto mybranch",
-					"tag": ["rebase"]
+					"tag": ["rebase", "head"]
 				}]
 			}										
 			],
@@ -287,17 +287,17 @@
 				[{
 					"command" : "cd ~",
 					"description": "Change to user home directory",
-					"tag": ["change", "home"]	
+					"tag": ["change", "home", "directory", "cd"]	
 				},
 				{
 					"command" : "cd ..",
 					"description": "Change directory to the current directory's parent directory",
-					"tag": ["change", "up", "parent"]
+					"tag": ["change", "up", "parent", "cd"]
 				},
 				{
 					"command" : "ls -a",
 					"description": "List all files including hidden.",
-					"tag": ["list", "hidden"]
+					"tag": ["list", "hidden", "view"]
 				},
 				{
 					"command" : "open myfile",
@@ -307,12 +307,12 @@
 				{
 					"command" : "clear",
 					"description": "Clear terminal screen.",
-					"tag": ["clear"]
+					"tag": ["clear", "screen"]
 				},
 				{
 					"command" : "ps aux",
 					"description": "Returns a list of processes. a - all users. u - processes owner. x - processes not attached to terminal.",
-					"tag": ["ps", "list"]
+					"tag": ["ps", "list", "aux"]
 				},				
 				{
 					"command" : "top -u",
@@ -341,7 +341,7 @@
 				{
 					"command" : "pwd",
 					"description": "Display path to working directory",
-					"tag": ["path" , "directory", "pwd"]		
+					"tag": ["path" , "directory", "pwd", "working"]		
 				},
 				{
 					"command" : "mkdir mydir",
@@ -393,7 +393,7 @@
 				[{
 					"command" : "gem query --local",
 					"description": "Lists all installed gems.",
-					"tag": ["hidden", "files"]	
+					"tag": ["hidden", "files", "gem"]	
 				},
 				{
 					"command" : "sudo gem install -n /usr/local/bin 'mygem'",

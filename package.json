@@ -9,7 +9,8 @@
   "main": "index.html",
   "scripts": {
     "sass": "sass --watch src/sass/styles.scss:css/styles.css",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "server": "python -m SimpleHTTPServer 6969"
   },
   "author": "Thomas Bullock @ Mot Web Dev",
   "license": "MIT",

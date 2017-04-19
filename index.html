@@ -10,14 +10,10 @@
  	<link rel="stylesheet" type="text/css" href="css/styles.css">
  </head>
  <body>
-	<header class="centered-navigation" role="banner">
-<!-- 		<h1>Mots FE Cheat Sheet</h1> -->
+	<header class="centered-navigation">
 	  <div class="centered-navigation-wrapper">
-<!-- 	    <a href="javascript:void(0)" class="mobile-logo">
-	      <img src="https://raw.githubusercontent.com/thoughtbot/refills/master/source/images/placeholder_square.png" alt="Logo image">
-	    </a> -->
 	    <a href="javascript:void(0)" id="js-centered-navigation-mobile-menu" class="centered-navigation-mobile-menu">MENU</a>
-	    <nav role="navigation">
+	    <nav>
 	      <ul id="js-centered-navigation-menu" class="centered-navigation-menu show">
 	        <li class="nav-link">
 	        	<a class="nav-btn" href="javascript:void(0)"><img src="img/git_logo.png" alt="Git Logo"><span>Git</span></a>
@@ -45,7 +41,7 @@
 <div class="wrapper">
 	<div class="cheat-sheet">
 		<div class="fullwidth">
-			<a class="tech-link" data-bind="attr: { href: link }"><img data-bind="attr: { src: icon } "src=""></a><h2 data-bind="text: myListDisplay"></h2>
+			<a class="tech-link" data-bind="attr: { href: link }"><img data-bind="attr: { src: icon }" src="img/git_logo.png" alt="tech badge"></a><h2 data-bind="text: myListDisplay">Git Cheat Sheet</h2>
 			<span class="message">Cheat copied to clipboard!</span>
 			<form class="search-bar" role="search">
 			  <input type="search" placeholder="Filter Cheats" data-bind="value: filter, valueUpdate: 'keyup'">
@@ -54,10 +50,10 @@
 	</div>
 
 		<div class="cheat-list" data-bind="foreach: cheatList">
-			<h3 data-bind="text: name"></h3>
+			<h3 data-bind="text: name">Loading....</h3>
 			<ul class="entry-list" data-bind="foreach: $root.filterEntries($data)">
 				<div class="entry">
-					<li><a href="javascript:void(0)" class="command" data-bind="text: command" role="button"></a></li>
+					<li><a href="javascript:void(0)" class="command" data-bind="text: command" role="button">....</a></li>
 					<li data-bind="text: description"></li>					
 				</div>			
 			</ul>
@@ -65,7 +61,7 @@
 </div> <!-- end of wrapper -->
 
 
-<footer class="footer-2" role="contentinfo">
+<footer class="footer-2">
     <ul>
       <li><a href="https://github.com/ThomasBullock/front-end-cheat-sheet">Fork on GitHub</a></li>
       <li><a href="javascript:void(0)">Contact</a></li>

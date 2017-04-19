@@ -34,9 +34,11 @@
   $footer-link-color: transparentize($footer-color, 0.6);
   $footer-disclaimer-color: transparentize($footer-color, 0.6);
 
+  position: fixed;
+  bottom: 0;
   background: $footer-background;
   display: inline-block;
-  padding: $base-spacing;
+  padding: $base-spacing / 2;
   width: 100%;
   border-top: 1px solid darken(#62b9fb, 24%);
 

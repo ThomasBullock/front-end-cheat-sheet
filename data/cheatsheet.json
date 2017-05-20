@@ -142,7 +142,22 @@
 					"description": "Rebase your current HEAD onto mybranch",
 					"tag": ["rebase", "head"]
 				}]
-			}										
+			},
+			{
+				"Submodules": 
+				[
+				{ 
+					"command": "git submodule init",
+					"description": "initialize your local configuration file",
+					"tag": ["Submodules", "submodule", "init", "configuration"]
+				},
+				{ 
+					"command": "git submodule update",
+					"description": "to fetch all the data from your submodule and check out the appropriate commit",
+					"tag": ["Submodules", "sunmodule", "init", "configuration", "commit"]
+				}				
+				]
+			}													
 			],
 	"Gulp": [
 			{
